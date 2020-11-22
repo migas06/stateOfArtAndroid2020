@@ -16,12 +16,4 @@ class ListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        buttonDetail.setOnClickListener {
-            Navigation.findNavController(it).navigate(ListFragmentDirections.actionGoToDetail())
-        }
-    }
-
 }

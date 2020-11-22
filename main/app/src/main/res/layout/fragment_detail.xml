@@ -6,15 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".view.DetailFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/buttonList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_listdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteX="355dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
