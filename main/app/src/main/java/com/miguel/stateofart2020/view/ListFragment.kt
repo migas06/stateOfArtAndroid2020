@@ -62,5 +62,13 @@ class ListFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2)
             adapter = listAdapter
         }
+
+        swipeLayout.setOnRefreshListener {
+            animalList.visibility = View.GONE
+            textinput_error.visibility = View.GONE
+            loading.visibility = View.VISIBLE
+            viewModel.refresh()
+            swipeLayout.isRefreshing = false
+        }
     }
 }
