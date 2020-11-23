@@ -16,11 +16,11 @@ class ListViewModel(application: Application) : AndroidViewModel(application){
     }
 
     private fun getAnimals() {
-        a1 = Animal("urso")
-        a2 = Animal("cão")
-        a3 = Animal("tigre")
-        a4 = Animal("gato")
-        a5 = Animal("raposa")
+        val a1 = Animal("urso")
+        val a2 = Animal("cão")
+        val a3 = Animal("tigre")
+        val a4 = Animal("gato")
+        val a5 = Animal("raposa")
 
         val tempAnimals : ArrayList<Animal> = arrayListOf(a1, a2, a3, a4, a5)
 
