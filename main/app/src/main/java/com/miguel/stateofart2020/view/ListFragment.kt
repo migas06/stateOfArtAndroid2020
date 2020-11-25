@@ -67,7 +67,7 @@ class ListFragment : Fragment() {
             animalList.visibility = View.GONE
             textinput_error.visibility = View.GONE
             loading.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.hardRequest()
             swipeLayout.isRefreshing = false
         }
     }

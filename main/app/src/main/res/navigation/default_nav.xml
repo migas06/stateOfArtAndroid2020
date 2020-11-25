@@ -13,6 +13,9 @@
         <action
             android:id="@+id/actionBackToDetail"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="animal"
+            app:argType="com.miguel.stateofart2020.model.Animal" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
