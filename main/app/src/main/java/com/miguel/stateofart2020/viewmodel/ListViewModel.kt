@@ -1,4 +1,4 @@
-package com.miguel.stateofart2020.viewModel
+package com.miguel.stateofart2020.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,10 +7,8 @@ import com.miguel.stateofart2020.Util.SharedPreferencesHelper
 import com.miguel.stateofart2020.model.Animal
 import com.miguel.stateofart2020.model.ApiKey
 import com.miguel.stateofart2020.model.Network.AnimalApiService
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 

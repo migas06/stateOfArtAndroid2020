@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.miguel.stateofart2020.R
-import com.miguel.stateofart2020.Util.getProgressDrawable
-import com.miguel.stateofart2020.Util.loadImage
 import com.miguel.stateofart2020.databinding.FragmentDetailBinding
 import com.miguel.stateofart2020.model.Animal
 import com.miguel.stateofart2020.model.AnimalPalette

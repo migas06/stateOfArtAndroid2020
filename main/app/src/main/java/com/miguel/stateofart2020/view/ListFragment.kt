@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.miguel.stateofart2020.R
 import com.miguel.stateofart2020.model.Animal
-import com.miguel.stateofart2020.view.Adapter.AnimalListAdapter
-import com.miguel.stateofart2020.viewModel.ListViewModel
+import com.miguel.stateofart2020.view.adapter.AnimalListAdapter
+import com.miguel.stateofart2020.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
