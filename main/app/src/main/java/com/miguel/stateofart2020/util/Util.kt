@@ -1,4 +1,4 @@
-package com.miguel.stateofart2020.Util
+package com.miguel.stateofart2020.util
 
 import android.content.Context
 import android.widget.ImageView

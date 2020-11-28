@@ -3,14 +3,16 @@ package com.miguel.stateofart2020.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.miguel.stateofart2020.Util.SharedPreferencesHelper
+import com.miguel.stateofart2020.di.DaggerViewModelListComponent
+import com.miguel.stateofart2020.util.SharedPreferencesHelper
 import com.miguel.stateofart2020.model.Animal
 import com.miguel.stateofart2020.model.ApiKey
-import com.miguel.stateofart2020.model.Network.AnimalApiService
+import com.miguel.stateofart2020.model.network.AnimalApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class ListViewModel(application: Application) : AndroidViewModel(application){
 
@@ -25,7 +27,12 @@ class ListViewModel(application: Application) : AndroidViewModel(application){
     //disposable is responsible for clear them all at the end
     //without memory leaks;
     private val disposable = CompositeDisposable()
-    private val api = AnimalApiService()
+
+    @Inject
+    lateinit var api: AnimalApiService
+    init {
+        DaggerViewModelListComponent.create().inject(this)
+    }
 
     private val prefs = SharedPreferencesHelper(getApplication())
 

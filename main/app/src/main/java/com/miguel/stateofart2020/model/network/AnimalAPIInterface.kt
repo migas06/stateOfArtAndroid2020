@@ -1,4 +1,4 @@
-package com.miguel.stateofart2020.model.Network
+package com.miguel.stateofart2020.model.network
 
 import com.miguel.stateofart2020.model.Animal
 import com.miguel.stateofart2020.model.ApiKey
