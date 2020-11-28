@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_list.*
 class ListFragment : Fragment() {
 
     private lateinit var viewModel: ListViewModel
-    private val listAdapter: AnimalListAdapter = AnimalListAdapter(ArrayList<Animal>())
+    private val listAdapter: AnimalListAdapter = AnimalListAdapter(ArrayList())
 
     private val animalListDataObserver = Observer<List<Animal>>{ list : List<Animal> ->
         list.let {

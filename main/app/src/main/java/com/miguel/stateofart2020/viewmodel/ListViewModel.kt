@@ -3,7 +3,10 @@ package com.miguel.stateofart2020.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.miguel.stateofart2020.di.DaggerViewModelListComponent
+import com.miguel.stateofart2020.di.AppModule
+import com.miguel.stateofart2020.di.serviceapi.DaggerViewModelListComponent
+import com.miguel.stateofart2020.di.shareddi.CONTEXT_APP
+import com.miguel.stateofart2020.di.shareddi.TypeOfContext
 import com.miguel.stateofart2020.util.SharedPreferencesHelper
 import com.miguel.stateofart2020.model.Animal
 import com.miguel.stateofart2020.model.ApiKey
@@ -16,11 +19,16 @@ import javax.inject.Inject
 
 class ListViewModel(application: Application) : AndroidViewModel(application){
 
+    constructor(application: Application, test: Boolean = true) : this(application){
+        injected = true
+    }
+
     val animals by lazy { MutableLiveData<List<Animal>>() }
     val loadError by lazy { MutableLiveData<Boolean>() }
     val loading by lazy { MutableLiveData<Boolean>() }
 
     private var invalidApiKey = false
+    private var injected = false
 
     //Get the links and clear when they finish;
     //if the viewModel get killed before the services end,
@@ -30,13 +38,21 @@ class ListViewModel(application: Application) : AndroidViewModel(application){
 
     @Inject
     lateinit var api: AnimalApiService
-    init {
-        DaggerViewModelListComponent.create().inject(this)
+    @Inject
+    @field:TypeOfContext(CONTEXT_APP)
+    lateinit var prefs : SharedPreferencesHelper
+
+    fun inject() {
+        if(!injected) {
+            DaggerViewModelListComponent.builder()
+                .appModule(AppModule(getApplication()))
+                .build()
+                .inject(this)
+        }
     }
 
-    private val prefs = SharedPreferencesHelper(getApplication())
-
     fun refresh() {
+        inject()
         val key: String? = prefs.getApiKey()
         invalidApiKey = false
         if (key.isNullOrEmpty()) {
@@ -47,6 +63,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application){
     }
 
     fun hardRequest(){
+        inject()
         loading.value = true;
         getKey()
     }
@@ -96,15 +113,15 @@ class ListViewModel(application: Application) : AndroidViewModel(application){
                         e.printStackTrace()
                         if (!invalidApiKey) {
                             invalidApiKey = true
+                            getKey()
                         } else {
                             loading.value = false
                             loadError.value = true
+                            animals.value = null
                         }
                     }
                 })
         )
-        loadError.value = false
-        loading.value = false
     }
 
     override fun onCleared() {

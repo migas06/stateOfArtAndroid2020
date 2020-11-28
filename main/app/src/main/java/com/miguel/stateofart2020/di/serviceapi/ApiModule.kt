@@ -1,4 +1,4 @@
-package com.miguel.stateofart2020.di
+package com.miguel.stateofart2020.di.serviceapi
 
 import com.miguel.stateofart2020.model.network.AnimalAPIInterface
 import com.miguel.stateofart2020.model.network.AnimalApiService
@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class ApiModule {
+open class ApiModule {
     private val BASE_URL = "https://us-central1-apis-4674e.cloudfunctions.net/"
 
     @Provides
@@ -24,7 +24,7 @@ class ApiModule {
     }
 
     @Provides
-    fun provideAnimalService() : AnimalApiService{
+    open fun provideAnimalService() : AnimalApiService{
         return AnimalApiService()
     }
 

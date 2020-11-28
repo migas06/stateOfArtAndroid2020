@@ -5,7 +5,7 @@ import android.preference.PreferenceManager
 
 class SharedPreferencesHelper(context: Context){
 
-    private val PREF_API_KEY = "API keu";
+    private val PREF_API_KEY = "API key";
 
     private val prefs = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
 
